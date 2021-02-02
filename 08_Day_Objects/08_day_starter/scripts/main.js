@@ -354,12 +354,72 @@ function signIn(user) {
 //
 // a. Create a function called rateProduct which rates the product.
 //
-// function rateProduct(prodName, userId, rate) {
-//   let entries = Object.entries(products);
-//   let product = 0;
-//   for (const index in entries) {
+function rateProduct(prodName, userId, rate) {
+  let entries = Object.entries(products);
 
-//   }
-
-// }
+  for (const index in entries) {
+    if (entries[index][1].name === prodName) {
+      products[index].ratings.push({ userId: userId, rate: rate });
+      return products;
+    }
+  }
+  return "Wrong product name";
+}
 // console.log(rateProduct("Laptop", "fg12cy", 5));
+
+// b. Create a function called averageRating which calculate the average rating of a product.
+//
+function averageRating(productName) {
+  let thisProduct = null;
+  let rateSum = 0;
+
+  for (const index in products) {
+    if (products[index].name === productName) {
+      thisProduct = products[index];
+    }
+  }
+  if (thisProduct != null) {
+    for (let i = 0; i < thisProduct.ratings.length; i++) {
+      rateSum += thisProduct.ratings[i].rate;
+    }
+  } else {
+    return "Product not found";
+  }
+  return rateSum / thisProduct.ratings.length;
+}
+// console.log(averageRating("mobile phone")); // 4.75
+
+// 4. This function will helps to like to the product if it is not liked and remove like if it was liked.
+//
+function likeProduct(userId, productName) {
+  let isValidUser = false;
+  let isValidProduct = false;
+  let productId;
+
+  for (const index in users) {
+    if (users[index]._id === userId) {
+      isValidUser = true;
+    }
+  }
+  for (const index in products) {
+    if (products[index].name === productName) {
+      isValidProduct = true;
+      productId = index;
+    }
+  }
+  if (isValidUser && isValidProduct) {
+    for (const index in products[productId].likes) {
+      if (products[productId].likes[index] === userId) {
+        products[productId].likes.splice(index, 1);
+        return "Disliked";
+      } else {
+        products[productId].likes += userId;
+        return "Liked";
+      }
+    }
+  } else {
+    return "User is not registered";
+  }
+}
+// console.log(likeProduct("fg12cy", "TV")); // Disliked
+// console.log(products);
