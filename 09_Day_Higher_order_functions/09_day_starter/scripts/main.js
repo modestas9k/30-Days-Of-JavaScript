@@ -172,10 +172,16 @@ function categorizeCountries(pattern) {
 function countFirstLetterOfCountry() {
   let arrOfCountries = countries.map((i) => i.name);
   let letterAndCount = [];
-
-  return newArr;
+  arrOfCountries.forEach((country) => {
+    let number = country
+      .toUpperCase()
+      .split("")
+      .filter((i) => i.includes(country[0]));
+    letterAndCount.push({ letter: country[0], number: number.length });
+  });
+  return letterAndCount;
 }
-// console.log(countFirstLetterOfCountry());
+// console.log(countFirstLetterOfCountry()); // [ { letter: "A", number: 3 }, { letter: "Å", number: 1 } ]
 
 // 5.
 //
@@ -206,7 +212,159 @@ function getLastTenCountries() {
 // 7. Find out which letter is used many times as initial
 // for a country name from the countries array
 //
-function mostUsedFirstLetterOfCountries() {
+function mostUsedFirstLetterOfCountries(letter) {
   let countriesNames = countries.map((i) => i.name);
+  let filteredCountries = countriesNames.filter((i) => i.startsWith(letter));
+  return `${filteredCountries}, ${filteredCountries.length}`;
 }
-console.log(mostUsedFirstLetterOfCountries());
+// console.log(mostUsedFirstLetterOfCountries("D")); // Denmark,Djibouti,Dominica,Dominican Republic, 4
+
+//
+//// Exercise 3
+//
+
+// 1. Use the countries information, in the data folder. Sort countries
+// by name, by capital, by population.
+//
+function sortCountries(word, sortBy = "ascending") {
+  let countryKeys = Object.keys(countries[0]);
+  if (countryKeys.find((i) => i == word)) {
+    let sortedCountries = countries.sort((a, b) => {
+      if (a[word] > b[word]) return 1;
+      if (a[word] < b[word]) return -1;
+      return;
+    });
+    if (sortBy === "descending") {
+      return sortedCountries.reverse();
+    } else {
+      return sortedCountries;
+    }
+  } else {
+    return "wrong key";
+  }
+}
+// console.log(sortCountries("population", "descending"));
+
+// 2. *** Find the 10 most spoken languages.
+//
+function mostSpokenLanguages(arr, range) {
+  let list = [];
+  arr.forEach((countryObj) => {
+    let languages = countryObj.languages;
+    for (const item of languages) {
+      let isAlreadyThere = list.findIndex((i) => i.country == item);
+      if (isAlreadyThere == -1) {
+        list.push({ country: item, count: 1 });
+      } else if (isAlreadyThere >= 0) {
+        list[isAlreadyThere].count++;
+      }
+    }
+  });
+  list.sort((a, b) => {
+    if (a.count > b.count) return -1;
+    if (a.count < b.count) return 1;
+    return;
+  });
+  return list.slice(0, range);
+}
+// console.log(mostSpokenLanguages(countries, 3)); // [ { country: "English", count: 91 }, { country: "French", count: 45 }, { country: "Arabic", count: 25 } ]
+
+// 3. Create a function which create the ten most populated countries.
+//
+function mostPopulatedCounties(arr, range) {
+  let newArr = arr.map((i) => ({ country: i.name, population: i.population }));
+  newArr.sort((a, b) => {
+    if (a.population > b.population) return -1;
+    if (a.population < b.population) return 1;
+    return;
+  });
+  return newArr.slice(0, range);
+}
+// console.log(mostPopulatedCounties(countries, 3)); // [ { country: "China", population: 1377422166 }, { country: "India", population: 1295210000 }, { country: "United States of America", population: 323947000 } ]
+
+// 4. *** Try to develop a program which calculate measure of central tendency of a
+// sample(mean, median, mode) and measure of variability(range, variance, standard
+// deviation). In addition to those measures find the min, max, count, percentile, and
+// frequency distribution of the sample. You can create an object called statistics and
+// create all the functions which do statistical calculations as method for the
+// statistics object.
+//
+const ages = [
+  31,
+  26,
+  34,
+  37,
+  27,
+  26,
+  32,
+  32,
+  26,
+  27,
+  27,
+  24,
+  32,
+  33,
+  27,
+  25,
+  26,
+  38,
+  37,
+  31,
+  34,
+  24,
+  33,
+  29,
+  26,
+];
+
+const statistics = {
+  count: (arr) => arr.length,
+  sum: (arr) => arr.reduce((sum, curr) => (sum += curr)),
+  min: (arr) => Math.min(...arr),
+  max: (arr) => Math.max(...arr),
+  range: (arr) => Math.max(...arr) - Math.min(...arr),
+  average: (arr) => statistics.range(arr) / 2 + Math.min(...arr),
+  mode: (arr) => {
+    let mode = [0, 0];
+    arr.forEach((item) => {
+      let sameNumArr = arr.filter((i) => i == item);
+      if (sameNumArr.length > mode[1]) {
+        mode = [item, sameNumArr.length];
+      }
+    });
+    return mode; // [ 26, 5 ]
+  },
+  freqDist: (arr) => {
+    let newArr = [];
+    arr.forEach((item) => {
+      let sameNumArr = arr.filter((i) => i == item);
+      let percent = (sameNumArr.length * 100) / arr.length;
+      if (!newArr.find((i) => i[1] == item)) {
+        newArr.push([percent, item]);
+      }
+    });
+    newArr.sort((a, b) => (a[0] > b[0] ? -1 : 1));
+    return newArr.join("), (");
+  },
+  describe: (arr) => {
+    return `Count: ${statistics.count(arr)} \nSum: ${statistics.sum(
+      arr
+    )} \nMin: ${statistics.min(arr)} \nMax: ${statistics.max(
+      arr
+    )} \nRange: ${statistics.range(arr)} \nAverage: ${statistics.average(
+      arr
+    )} \nMode: (${statistics.mode(
+      arr
+    )}) \nFrequency Distribution: [(${statistics.freqDist(arr)})]`;
+  },
+};
+// console.log(statistics.describe(ages));
+
+// Count: 25
+// Sum: 744
+// Min: 24
+// Max: 38
+// Range: 14
+// Average: 31
+// Mode: (26,5)
+// Frequency Distribution: [(20, 26), (16, 27), (12, 32), (8, 33), (8, 24), (8, 37), (8, 34), (8, 31), (4, 29), (4, 38), (4, 25)]
