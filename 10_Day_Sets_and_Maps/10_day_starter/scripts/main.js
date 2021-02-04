@@ -111,6 +111,10 @@ function mostSpokenLanguages(arr, range) {
     if (a.count < b.count) return 1;
     return;
   });
-  return list.slice(0, range);
+  let sortList = [];
+  list.forEach((item) => {
+    sortList.push({ [item.country]: item.count });
+  });
+  return sortList.slice(0, range);
 }
-console.log(mostSpokenLanguages(countries, 10));
+console.log(mostSpokenLanguages(countries, 3)); // [ { English: 91 }, { French: 45}, { Arabic: 25} ]
