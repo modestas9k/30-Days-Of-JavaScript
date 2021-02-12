@@ -1,0 +1,29 @@
+body {
+  font-family: Montserrat;
+  color: rgb(31, 31, 31);
+  text-align: center;
+  margin: 0;
+}
+h2 {
+  color: rgb(231, 140, 65);
+  font-weight: 700;
+  font-size: 2em;
+  margin-bottom: 0;
+}
+.subtitle {
+  margin-top: 5px;
+}
+#countries {
+  padding: 15px;
+  background-color: whitesmoke;
+}
+button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: rgb(231, 140, 65);
+  border: none;
+  text-transform: uppercase;
+}
+.graph-buttons {
+  margin: 20px;
+}
