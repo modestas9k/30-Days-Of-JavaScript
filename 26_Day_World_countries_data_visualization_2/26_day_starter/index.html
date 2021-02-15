@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>30DaysOfJavaScript:26 Day</title>
+  </head>
 
-<head>
-    <title>30DaysOfJavaScript:11 Day </title>
-</head>
-
-<body>
-    <h1>30DaysOfJavaScript:11 Day</h1>
-    <h2>Destructuring and Spread</h2>
-
+  <body>
+    <header>
+      <h1>World countries list</h1>
+      <h4>
+        Total Number of countries:
+        <span id="countries-lenght"></span>
+      </h4>
+      <span id="search-result"></span>
+      <div class="buttons-wrapper">
+        <button id="btn-starting-word">Starting word</button>
+        <button id="btn-any-word">Search with any word</button>
+        <button id="btn-sort">Sort</button>
+      </div>
+      <input id="search" placeholder="Search country..." type="text" />
+    </header>
+    <main>
+      <div class="countries-wrapper"></div>
+    </main>
     <script src="./data/countries.js"></script>
     <script src="./scripts/main.js"></script>
-
-</body>
-
+  </body>
 </html>
