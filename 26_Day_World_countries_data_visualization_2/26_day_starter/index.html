@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>30DaysOfJavaScript:26 Day</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
@@ -9,9 +17,15 @@
       <h1>World countries list</h1>
       <h4>
         Total Number of countries:
-        <span id="countries-lenght"></span>
+        <span id="countries-length"></span>
       </h4>
-      <span id="search-result"></span>
+      <span id="search-result" hidden>
+        Countries
+        <span id="search-type"></span>
+        <span id="search-key"></span>
+        are
+        <span id="search-value"></span>
+      </span>
       <div class="buttons-wrapper">
         <button id="btn-starting-word">Starting word</button>
         <button id="btn-any-word">Search with any word</button>
