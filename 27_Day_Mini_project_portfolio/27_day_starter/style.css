@@ -1,0 +1,74 @@
+body {
+  font-family: montserrat;
+}
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* title slides */
+
+#title-slider {
+  background-color: #ff7f50;
+  padding: 20px;
+  border-radius: 5px;
+}
+#slider-name {
+  animation: name 2s infinite;
+}
+@keyframes name {
+  0% {
+    color: rgba(19, 19, 19, 0);
+    margin: 0;
+  }
+  100% {
+    margin: 20px;
+    color: rgba(19, 19, 19);
+  }
+}
+
+/* challenges */
+
+.challenges-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: 130px;
+  align-items: center;
+}
+.challenge-box {
+  height: 100px;
+  width: calc(30% - 20px);
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 0 6px 2px #eee;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+.challenge-box:hover {
+  background-color: #ff7f50;
+  box-shadow: 0 0 8px 2px #e2a189;
+  transform: scale(1.1);
+}
+
+/* colorful technologies */
+
+#technologies-teach {
+  font-size: 2em;
+  font-weight: 900;
+  animation: fade 2s infinite;
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
