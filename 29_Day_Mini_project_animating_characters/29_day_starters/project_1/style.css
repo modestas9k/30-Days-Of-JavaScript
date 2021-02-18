@@ -1,0 +1,13 @@
+.span {
+  font-size: 5em;
+  letter-spacing: 0.15em;
+  animation: hideAndSeek 3s ease;
+}
+@keyframes hideAndSeek {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
