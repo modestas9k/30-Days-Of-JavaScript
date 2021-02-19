@@ -1,0 +1,140 @@
+body {
+  font-family: helvetica;
+  margin: 0;
+  text-align: center;
+}
+header {
+  background-color: #eeeeee;
+  padding: 1em;
+}
+header h1 {
+  color: #e28811;
+  letter-spacing: 0.03em;
+}
+
+/* search section */
+
+.search-wrapper {
+  padding: 1em;
+}
+input {
+  padding: 13px 20px;
+  margin: 10px;
+  min-width: 250px;
+  border-radius: 50px;
+  border: none;
+  background-color: #f5f5f5;
+  transition: all 0.3s ease-in-out;
+}
+input:focus {
+  outline: none;
+  background-color: #f5f5f5;
+  box-shadow: 2px 2px 10px -1px rgba(94, 94, 94, 0.404);
+}
+
+/* search buttons */
+
+button {
+  padding: 7px 15px;
+  margin: 5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 15px;
+  background-color: #e28811;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 2px 10px -1px #a7640d94;
+}
+button:hover {
+  transform: scale(105%);
+}
+.btn-active {
+  background-color: #cf7500;
+  transform: scale(115%);
+}
+button a {
+  text-decoration: none;
+  color: black;
+}
+/* search result */
+
+.search-result {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeeeee;
+  min-height: 1em;
+  padding: 20px;
+}
+.country-box {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  height: 280px;
+  margin: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 5px;
+  overflow: auto;
+}
+.country-box img {
+  height: 60px;
+  object-fit: contain;
+}
+.country-box h3 {
+  font-size: 1em;
+}
+.country-box p {
+  font-size: 0.8em;
+  text-align: left;
+  line-height: 1.2em;
+  margin: 5px;
+}
+
+/* second section / filter by population or language */
+
+.graph-head {
+  padding: 1em;
+}
+#graph-body {
+  background-color: #f5f5f5;
+  padding: 20px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.graph-line {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  align-items: center;
+  max-width: 860px;
+  min-width: 300px;
+  width: 100%;
+  margin: 5px auto;
+}
+.graph-name-and-bar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.graph-name {
+  width: 100px;
+  text-align: left;
+  font-size: 0.9em;
+}
+.graph-bar {
+  height: 30px;
+  max-width: 700px;
+  background-color: #e78c41;
+}
+.graph-count {
+  margin: 0 10px;
+  font-size: 0.9em;
+  width: 100px;
+  text-align: left;
+}

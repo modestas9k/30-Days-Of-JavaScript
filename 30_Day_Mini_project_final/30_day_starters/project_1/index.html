@@ -1,16 +1,44 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>30DaysOfJavaScript:30</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-    <title>30DaysOfJavaScript:30 </title>
-</head>
+  <body>
+    <header id="head">
+      <h1>World Countries Data</h1>
+      <p>Currently we have 250 countries</p>
+    </header>
+    <main>
+      <div class="search-wrapper">
+        <input
+          id="search"
+          type="text"
+          placeholder="Search by country name or capital..."
+        />
+        <div class="buttons">
+          <button id="name-btn" onclick="searchByName()">Name</button>
+          <button id="capital-btn">Capital</button>
+          <a href="#graph">
+            <button>See statistics</button>
+          </a>
+        </div>
+      </div>
+      <div class="search-result"></div>
+      <div id="graph" class="graph-head">
+        <button id="population-btn">Population</button>
+        <button id="language-btn">Languages</button>
+        <a href="#head">
+          <button>Go up</button>
+        </a>
 
-<body>
-   
+        <h5 id="graph-selected"></h5>
+      </div>
+      <div id="graph-body"></div>
+    </main>
 
     <script src="./data/countries_data.js"></script>
     <script src="./scripts/main.js"></script>
-
-</body>
-
+  </body>
 </html>
